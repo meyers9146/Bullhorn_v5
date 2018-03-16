@@ -1,0 +1,10 @@
+package com.example.demo;
+
+import javax.persistence.Entity;
+
+@Entity
+public class User {
+    private String id;
+    private String name;
+
+}
