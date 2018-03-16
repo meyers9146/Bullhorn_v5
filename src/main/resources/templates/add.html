@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: headstuff"></head>
+<body>
+
+<nav th:replace="base :: navbar"></nav>
+<h2>Post New Message</h2>
+<form action="#" th:action="@{/process}" th:object="${messages}" method="post"
+    enctype="multipart/form-data">
+
+    <input type="hidden" th:field="*{id}"/>
+
+    Message: <input type="text" th:field="*{content}" /><br/>
+    <span th:if="${#fields.hasErrors('content')}"
+          th:errors="*{content}">Invalid input</span><br/>
+
+    Today's Date: <input type="date" th:field="*{postedDate}"/><br/>
+    <span th:if="${#fields.hasErrors('postedDate')}"
+          th:errors="*{postedDate}">Invalid input</span><br/>
+
+    Your Name: <input type="text" th:field="*{sentBy}"/><br/>
+    <span th:if="${#fields.hasErrors('sentBy')}"
+          th:errors="*{sentBy}">Invalid input</span><br/>
+
+    <input type="file" name="file" value="Add Image"/> <br /><br />
+
+    <input type="submit" value="Post"/>
+</form>
+
+<nav th:replace="base :: footer"></nav>
+<th:block th:replace="base :: jslinks"></th:block>
+</body>
+</html>

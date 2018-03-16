@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: headstuff"></head>
+
+<body>
+
+<nav th:replace="base :: navbar"></nav>
+
+<p><a class="btn btn-primary"
+href="/add" role="button">Add new post</a>
+</p>
+
+<div class="container">
+
+    <div th:each="message : ${messages}">
+        <div th:if="${message.image} != null">
+            <img th:src="${message.image}" />
+        </div>
+        <h2 th:text="${message.content}"></h2><br />
+        <h4 th:inline="text"> [[${message.sentBy}]], [[${message.postedDate}]] </h4><br />
+    </div>
+
+</div>
+
+<nav th:replace="base :: footer"></nav>
+<th:block th:replace="base :: jslinks"></th:block>
+
+</body>
+</html>
